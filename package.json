@@ -1,0 +1,19 @@
+{
+  "name": "TestApp",
+  "version": "1.0.0",
+  "productName": "TestApp",
+  "description": "Application to test autoUpdates",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Josh Danns",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.7.5"
+  },
+  "dependencies": {
+    "nedb": "^1.8.0",
+    "js-sha256": "^0.6.0"
+  }
+}
