@@ -10,5 +10,4 @@ function writeLogFile(message) {
     });
   }
   
-  // module.exports = writeLogFile;
-  writeLogFile('whatever whatever whatever');
+  module.exports = writeLogFile;

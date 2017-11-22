@@ -25,7 +25,7 @@ for updates
 
 8. made minor change to index.html && incremented *internal* package.json file
 
-9. re-built .exe && re-built installer
+9. re-built .exe && re-built installer (I run the generateInstaller script from the command line with `node generateInstaller.js`)
 
 10. start server in build folder so the index.js file feedurl exists
 
@@ -50,3 +50,86 @@ reflect all the updates. **
        be stuck on 1.0.0 and 1.0.1
     -- I might've just been incrementing the wrong package.json file. Very 
        important to make sure you're incrementing the correct file.
+
+I got the following stack trace in my console when I tried to generate the installer:
+
+```
+λ node generateInstaller.js
+No dice: Failed with exit code: 4294967295
+Output:
+System.AggregateException: One or more errors occurred. ---> System.Exception: 7-Zip [64] 16.04 : Copyright (c) 1999-2016 Igor Pavlov : 2016-10-04
+
+Open archive: C:\Development\TestApp\build\installer32\TestApp-1.0.3-full.nupkg
+
+WARNINGS:
+There are data after the end of archive
+
+--
+Path = C:\Development\TestApp\build\installer32\TestApp-1.0.3-full.nupkg
+Type = zip
+ERRORS:
+Headers Error
+Unconfirmed start of archive
+WARNINGS:
+There are data after the end of archive
+Physical Size = 20387628
+Tail Size = 19458260
+
+
+Error:
+There is some data block after the end of the archive
+Not implemented
+
+
+ERRORS:
+Headers Error
+Unconfirmed start of archive
+
+
+
+System ERROR:
+Not implemented
+   at Squirrel.Utility.<CreateZipFromDirectory>d__23.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at Squirrel.ReleasePackage.CreateReleasePackage(String outputFile, String packagesRootDir, Func`2 releaseNotesProcessor, Action`1 contentsPostProcessHook)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+   at Squirrel.Update.Program.Main(String[] args)
+---> (Inner Exception #0) System.Exception: 7-Zip [64] 16.04 : Copyright (c) 1999-2016 Igor Pavlov : 2016-10-04
+
+Open archive: C:\Development\TestApp\build\installer32\TestApp-1.0.3-full.nupkg
+
+WARNINGS:
+There are data after the end of archive
+
+--
+Path = C:\Development\TestApp\build\installer32\TestApp-1.0.3-full.nupkg
+Type = zip
+ERRORS:
+Headers Error
+Unconfirmed start of archive
+WARNINGS:
+There are data after the end of archive
+Physical Size = 20387628
+Tail Size = 19458260
+
+
+Error:
+There is some data block after the end of the archive
+Not implemented
+
+
+ERRORS:
+Headers Error
+Unconfirmed start of archive
+
+
+
+System ERROR:
+Not implemented
+   at Squirrel.Utility.<CreateZipFromDirectory>d__23.MoveNext()<---
+
+```

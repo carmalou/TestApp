@@ -18,6 +18,30 @@ logIt('appVersion == ' + appVersion);
 // this will change to whereever your files live in prod. maybe an S3 bucket or another fileshare
 const updateFeed = 'http://localhost:8080/installer32'
 
+autoUpdater.setFeedURL(updateFeed + '?v=' + appVersion);
+autoUpdater.checkForUpdates(); // this is where electron will run a check for updates
+
+autoUpdater.on('checking-for-update', function() {
+  logIt('Checking for updates');
+});
+
+autoUpdater.on('update-available', function() {
+  logIt('Update is available');
+});
+
+autoUpdater.on('update-not-available', function() {
+  logIt('Update is not available');
+});
+
+autoUpdater.on('update-downloaded', function(response) {
+  logIt('update downloaded!');
+  // here you could either prompt your user to quit and install
+  // or you could stop the app and run the install.
+  // but you'll want the following method
+
+  autoUpdater.quitAndInstall();
+});
+
 menuTemplate = 
 [
   {
@@ -203,28 +227,4 @@ function handleSquirrelEvent(application) {
             return true;
     }
 };
-
-autoUpdater.setFeedURL(updateFeed + '?v=' + appVersion);
-autoUpdater.checkForUpdates(); // this is where electron will run a check for updates
-
-autoUpdater.on('checking-for-update', function() {
-  logIt('Checking for updates');
-});
-
-autoUpdater.on('update-available', function() {
-  logIt('Update is available');
-});
-
-autoUpdater.on('update-not-available', function() {
-  logIt('Update is not available');
-});
-
-autoUpdater.on('update-downloaded', function(response) {
-  logIt('update downloaded!');
-  // here you could either prompt your user to quit and install
-  // or you could stop the app and run the install.
-  // but you'll want the following method
-
-  autoUpdater.quitAndInstall();
-});
 
