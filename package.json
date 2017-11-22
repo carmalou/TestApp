@@ -1,0 +1,28 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^1.7.9",
+    "electron-packager": "^10.1.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^19.45.5",
+    "electron-winstaller": "^2.6.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-windows": "electron-packager ./src test-app --out ./build --platfrom=win32 --arch=ia32 --overwrite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carmalou/TestApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carmalou/TestApp/issues"
+  },
+  "homepage": "https://github.com/carmalou/TestApp#readme"
+}
