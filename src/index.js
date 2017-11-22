@@ -14,8 +14,9 @@ const {ipcMain} = require('electron')
 // need to include the autoupdater module to listen for events
 const autoUpdater = electron.autoUpdater
 const appVersion = require('./package.json').version
+logIt('appVersion == ' + appVersion);
 // this will change to whereever your files live in prod. maybe an S3 bucket or another fileshare
-const feedUrl = 'http://localhost:8080/installer32'
+const updateFeed = 'http://localhost:8080/installer32'
 
 menuTemplate = 
 [
